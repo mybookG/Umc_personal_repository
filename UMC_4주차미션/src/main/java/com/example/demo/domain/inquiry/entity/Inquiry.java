@@ -24,7 +24,6 @@ public class Inquiry {
     @Column(name = "image")
     private String image;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @Column(name="user_id", nullable=false)
+    private long user_id;
 }

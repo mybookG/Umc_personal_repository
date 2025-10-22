@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name="mission")
+@ToString(exclude = "userMissions")
 @Setter
 public class Mission {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,9 @@ public class Mission {
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserMission> userMissions;
 
-    @ManyToOne
-    @JoinColumn(name="store")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id", nullable = false)
     private Store store;
+
+
 }

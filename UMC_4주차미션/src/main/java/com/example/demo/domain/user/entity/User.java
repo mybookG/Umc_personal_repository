@@ -14,10 +14,12 @@ import java.util.List;
 
 import com.example.demo.domain.user.enums.Gender;
 
+
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@ToString(exclude = "userMissions")
 @Getter
 @Table(name="User")
 public class User {
@@ -48,6 +50,7 @@ public class User {
 
     @Column(name="point", nullable=false)
     private long point;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserMission> userMissions;

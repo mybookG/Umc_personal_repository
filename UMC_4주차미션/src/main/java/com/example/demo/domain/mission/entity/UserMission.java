@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+@ToString(exclude = {"user", "mission"})
 @Setter
 @Table(name="userMission")
 public class UserMission {
@@ -30,15 +31,17 @@ public class UserMission {
     @Column(name="completedTime",nullable=false)
     private LocalDateTime completedTime;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
+    // ✅ User와 연결
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name="mission_id")
+    // ✅ Mission과 연결
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mission_id", nullable = false)
     private Mission mission;
 
-    @OneToOne
-    @JoinColumn(name = "reveiw_id")
-    private Reveiw reveiw;
+    // ✅ 리뷰 연결 (필요시)
+    @Column(name="reveiw_id", nullable=false)
+    private long reveiw;
 }

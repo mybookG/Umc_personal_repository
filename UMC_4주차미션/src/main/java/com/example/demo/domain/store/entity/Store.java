@@ -29,9 +29,8 @@ public class Store {
     @Column(name="introduce", nullable = true, length = 100)
     private String introduce;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @Column(name = "userId", nullable = false)
+    private long userId;
 
     @OneToMany(mappedBy = "store",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mission> missions;

@@ -30,14 +30,13 @@ public class Reveiw {
     @Column(name="scope", nullable=false)
     private int scope;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
-    private User user;
+    @Column(name="user_id", nullable=false)
+    private long userId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="store_id")
     private Store store;
 
-    @OneToOne(mappedBy = "reveiw", cascade = CascadeType.ALL, orphanRemoval = true)
-    private UserMission userMission;
+    @Column(name="user_mission", nullable=false)
+    private long userMission;
 }
