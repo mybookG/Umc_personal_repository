@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReveiwRepository extends JpaRepository<Reveiw, Long> {
+public interface ReveiwRepository extends JpaRepository<Reveiw, Long>, ReviewQueryDsl {
     List<Reveiw> findByReveiwId(Long reveiwId);
 
     @Modifying
@@ -25,3 +25,4 @@ public interface ReveiwRepository extends JpaRepository<Reveiw, Long> {
     void insertReveiw(@Param("id") long userId, @Param("storeId") long storeId, @Param("userMission")long userMission,
                       @Param("title") String title,@Param("description") String description,@Param("image") String image,@Param("scope") int scope);
 }
+
