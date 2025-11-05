@@ -1,6 +1,5 @@
 package com.example.demo.domain.reveiw.repository;
 
-import jakarta.persistence.Entity;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.domain.reveiw.entity.Reveiw;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReveiwRepository extends JpaRepository<Reveiw, Long>, ReviewQueryDsl {
+public interface ReveiwRepository extends JpaRepository<Reveiw, Long>, ReveiwQueryDsl {
     List<Reveiw> findByReveiwId(Long reveiwId);
 
     @Modifying

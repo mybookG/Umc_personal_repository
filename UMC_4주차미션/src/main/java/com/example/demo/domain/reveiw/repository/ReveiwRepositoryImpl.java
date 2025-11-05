@@ -13,7 +13,7 @@ import static com.example.demo.domain.reveiw.entity.QReveiw.reveiw;
 
 @Repository
 @RequiredArgsConstructor
-public class ReveiwRepositoryImpl implements ReviewQueryDsl {
+public class ReveiwRepositoryImpl implements ReveiwQueryDsl {
 
     private final EntityManager em;
     private final ReveiwRepository reveiwRepository;
