@@ -8,22 +8,26 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@Table(name="inquiry")
+@Getter
 @Setter
+@Table(name = "inquirys")
 public class Inquiry {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="title", nullable=false, length=50)
+    @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @Column(name="content", nullable=false, length=500)
+    @Column(name = "content", nullable = false, length = 500)
     private String content;
 
     @Column(name = "image")
     private String image;
 
-    @Column(name="user_id", nullable=false)
-    private long user_id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

@@ -25,3 +25,5 @@ public interface ReveiwRepository extends JpaRepository<Reveiw, Long>, ReveiwQue
                       @Param("title") String title,@Param("description") String description,@Param("image") String image,@Param("scope") int scope);
 }
 
+public interface ReveiwSaveRepository extends JpaRepository<Reveiw>{}
+
