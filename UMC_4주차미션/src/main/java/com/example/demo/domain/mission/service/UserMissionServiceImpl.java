@@ -4,9 +4,10 @@ import com.example.demo.domain.mission.dto.UserMissionReqDTO;
 import com.example.demo.domain.mission.dto.UserMissionResDTO;
 import com.example.demo.domain.mission.entity.UserMission;
 import com.example.demo.domain.mission.repository.UserMissionRepository;
-import com.example.demo.domain.mission.service.UserMissionCommandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -25,10 +26,8 @@ public class UserMissionServiceImpl implements UserMissionCommandService {
         UserMission saved = userMissionRepository.save(userMission);
 
         return UserMissionResDTO.JoinDTO.builder()
-                .id(saved.getId())
-                .status(saved.getStatus())
-                .user(saved.getUser())
-                .mission(saved.getMission())
+                .reveiwId(saved.getId())
+                .startTime(LocalDateTime.now())
                 .build();
     }
 }
