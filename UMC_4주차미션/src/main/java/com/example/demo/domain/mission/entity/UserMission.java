@@ -2,46 +2,46 @@ package com.example.demo.domain.mission.entity;
 
 import com.example.demo.domain.reveiw.entity.Reveiw;
 import com.example.demo.domain.user.entity.User;
+import com.example.demo.domain.mission.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
-import  com.example.demo.domain.mission.enums.Status;
 import java.time.LocalDateTime;
 
 @Entity
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-@ToString(exclude = {"user", "mission"})
+@Getter
 @Setter
-@Table(name="userMission")
+@Table(name = "userMissions")
 public class UserMission {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name="status",nullable=false)
+    @Column(name = "status", nullable = false)
     private Status status;
 
-    @Column(name="startTime",nullable=false)
+    @Column(name = "start_time", nullable = false)
     private LocalDateTime startTime;
 
-    @Column(name="endTime",nullable=false)
+    @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    @Column(name="completedTime",nullable=false)
+    @Column(name = "completed_time")
     private LocalDateTime completedTime;
 
-    // ✅ User와 연결
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // ✅ Mission과 연결
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mission_id", nullable = false)
     private Mission mission;
 
-    // ✅ 리뷰 연결 (필요시)
-    @Column(name="reveiw_id", nullable=false)
-    private long reveiw;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reveiw_id")
+    private Reveiw reveiw;
 }

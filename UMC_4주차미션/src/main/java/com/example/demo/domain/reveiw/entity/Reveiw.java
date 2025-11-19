@@ -1,6 +1,5 @@
 package com.example.demo.domain.reveiw.entity;
 
-import com.example.demo.domain.mission.entity.Mission;
 import com.example.demo.domain.mission.entity.UserMission;
 import com.example.demo.domain.store.entity.Store;
 import com.example.demo.domain.user.entity.User;
@@ -9,34 +8,40 @@ import lombok.*;
 
 @Entity
 @Builder
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@Getter
 @Setter
-@Table(name="reveiw")
+@Table(name = "reveiws")
 public class Reveiw {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name="title", nullable=false, length=20)
+    @Column(name = "title", nullable = false, length = 20)
     private String title;
 
-    @Column(name= "description", nullable=false, length=100)
+    @Column(name = "description", nullable = false, length = 100)
     private String description;
 
     @Column(name = "image")
     private String image;
 
-    @Column(name="scope", nullable=false)
+    @Column(name = "scope", nullable = false)
     private int scope;
 
-    @Column(name="user_id", nullable=false)
-    private long userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="store_id")
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
-    @Column(name="user_mission", nullable=false)
-    private long userMission;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_mission_id", nullable = false)
+    private UserMission userMission;
 }
