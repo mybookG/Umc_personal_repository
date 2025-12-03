@@ -12,7 +12,7 @@ import org.springframework.data.domain.Pageable;
 public interface MissionRepository extends JpaRepository<Mission, Long> {
 
     @Query("""
-    SELECT new com.example.demo.dto.Home(u.id, m.title, m.m_point, s.name, s.address, u.point)
+    SELECT new com.example.demo.dto.Home(u.id, m.title, m.mPoint, s.name, s.address, u.point)
     FROM UserMission um
     JOIN um.user u
     JOIN um.mission m

@@ -1,6 +1,7 @@
 package com.example.demo.domain.user.entity;
 
 import com.example.demo.domain.user.enums.Gender;
+import com.example.demo.domain.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -43,4 +44,13 @@ public class User {
 
     @Column(name = "point", nullable = false)
     private Long point;
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
