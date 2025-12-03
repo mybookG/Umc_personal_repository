@@ -13,4 +13,8 @@ public interface UserMissionQueryService {
     )throws Exception;
     UserMissionResDTO.UsertMissionVeiwDTO findUserMissionById();
     UserMissionResDTO.UsertMissionVeiwDTO findeUserMissionByStatus();
+
+    UserMissionResDTO.UsertMissionVeiwDTO findUserMissionById(UserMissionResDTO.UsertMissionVeiwDTO req);
+
+    UserMissionResDTO.UsertMissionVeiwDTO findeUserMissionByStatus(UserMissionResDTO.GetMissionListDTO req);
 }

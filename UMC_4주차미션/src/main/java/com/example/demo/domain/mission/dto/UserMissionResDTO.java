@@ -19,7 +19,7 @@ public class UserMissionResDTO {
 
     @Builder
     public record GetMissionListDTO(
-            UserMission<UsertMissionVeiwDTO> UserMissionViewDTOList,
+            List<UsertMissionVeiwDTO> UserMissionViewDTOList,
             Integer listSize,
             Integer totalSize,
             Long totalElements,

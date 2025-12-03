@@ -35,7 +35,7 @@ public class ReveiwDTO {
             String description,
             String image,
             int scope
-    )
+    ){}
 
     @Builder
     public record ReveiwViewMissionDTO(
